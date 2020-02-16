@@ -1,5 +1,5 @@
 /* eslint-disable react/destructuring-assignment */
-import React, { useLayoutEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import NotFound from '../components/NotFound';
 import { getVideoSource } from '../actions';
@@ -11,7 +11,7 @@ const Player = (props) => {
   const { id } = props.match.params;
   const hasPlaying = Object.keys(props.playing).length > 0;
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     props.getVideoSource(id);
   }, []);
 
