@@ -1,0 +1,7 @@
+.app {
+  background-image: linear-gradient(#21c08b, #8f57fd);
+  transition: .4s;
+  &.isHome {
+    background-image: linear-gradient(#8f57fd , #8f57fd);
+  }
+}
