@@ -83,5 +83,5 @@ const renderApp = (req, res) => {
 app.get('*', renderApp);
 
 app.listen(PORT, (error) => {
-  error ? console.log(error) : console.log('Server running on 3000 port');
+  error ? console.log(error) : console.log(`Server running on ${PORT} port`);
 });
