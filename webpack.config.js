@@ -22,7 +22,7 @@ module.exports = {
     publicPath: '/',
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
   },
   optimization: {
     minimize: true,
@@ -38,6 +38,12 @@ module.exports = {
           priority: 1,
           filename: isDev ? 'assets/vendor.js' : 'assets/vendor-[hash].js',
           enforce: true,
+          test(module, chunks) {
+            // validating that it exists module.nameForCondition and executing it to return the chunkName
+            const chunkName = module.nameForCondition && module.nameForCondition();
+            // validating that it does not exist in vendors and that it is in node modules
+            return chunks.some((chunk) => chunk.name !== 'vendors' && /[\\/]node_modules[\\/]/.test(chunkName));
+          },
         },
       },
     },
